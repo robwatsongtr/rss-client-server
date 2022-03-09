@@ -182,54 +182,15 @@ img {
 
 /****** the container ********/
 .appLayout {
-  /* layout for mobile*/
-  height: 90vh;
+  height: 85vh;
   width: 90%;
   margin: 20px auto; 
 
   display: grid; 
-  gap: 5px; 
+  grid-template-rows: 250px 250px 500px;
+  gap: 10px; 
 }
 
-
-/******layout for tablet */
-@media (min-width: 768px) {
-
-  .appLayout {
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 300px 700px
-  }
-
-  .appLayout .box-1 {
-    grid-column: 1 / 13;
-  }
-
-  .appLayout .box-2 {
-    grid-column: 6 / 13;
-  }
-
-  
-
-}
-
-/********layout for laptop/computer */
-@media (min-width: 1080px) {
-
-  .appLayout {
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 300px 700px
-  }
-
-  .appLayout .box-1 {
-    grid-column: 1 / 13;
-  }
-
-  .appLayout .box-2 {
-    grid-column: 6 / 13;
-  }
-
-  
-}
 
 
 

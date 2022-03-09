@@ -1,14 +1,13 @@
-
-const TitlesBoxA = props => {
+const FeedsBoxA = props => {
 
   return (
     <> 
       <div className="box-1">             
-        Titles Box A       
+        Feeds Box A      
       </div>
     </>
   )
 
 }
 
-export default TitlesBoxA;
+export default FeedsBoxA;

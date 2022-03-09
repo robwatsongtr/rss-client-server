@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import TitlesBoxA from './components/TitlesBoxA';
-import ContentBoxB from './components/ContentBoxB';
+import FeedsBoxA from './components/FeedsBoxA';
+import TitlesBoxB from './components/TitlesBoxB';
+import ContentBoxC from './components/ContentBoxC';
 import Navbar from './components/Navbar';
 import axios from 'axios';
 import './App.css';
+
 
 function App() {
   return (
@@ -12,15 +14,18 @@ function App() {
 
         <div className="appLayout">
 
-            <TitlesBoxA 
+            <FeedsBoxA
+
+            />
+
+            <TitlesBoxB 
               
             />
 
-            <ContentBoxB 
+            <ContentBoxC 
               
             />
-
-          
+         
         </div>
 
     </>
