@@ -8,6 +8,24 @@ import './App.css';
 
 
 function App() {
+
+  const [feed, setFeed] = useState({
+    feedTitle: ''
+  })
+
+  useEffect( () => {  
+
+    axios.get('http://localhost:5000/')
+      .then( response => {
+        setFeed({
+          feedTitle: response
+        })
+      }) 
+    
+  },[])
+
+  console.log(feed);
+
   return (
     <>
        <Navbar />
