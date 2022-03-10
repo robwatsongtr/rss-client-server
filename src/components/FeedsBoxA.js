@@ -5,12 +5,15 @@ const FeedsBoxA = props => {
     props.clicked(e.target.id);
   }
 
-  const feed = props.items.description;
+  const title = props.feedInfo.title
+  const feedDescription = props.feedInfo.description;
 
   return (
     <> 
-      <div className="box-1">             
-        { feed }
+      <div className="box-1">    
+        { title }  
+        <br></br>       
+        { feedDescription }
       </div>
     </>
   )

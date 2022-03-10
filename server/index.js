@@ -23,8 +23,8 @@ router.get('/', apiRunning);
 router.get('/rssTest', (req, res) => {
 
   (async () => {
-    let feed = await parser.parseURL('https://fair.org/feed/' );
-    res.json(feed);  
+    let feed = await parser.parseURL('https://www.reddit.com/.rss' );
+    res.send(feed);  
   }) ();
    
 })

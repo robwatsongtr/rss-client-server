@@ -16,10 +16,18 @@ const TitlesBoxB = props => {
   //   )
   // })
 
+  // const items = props.feedInfo.forEach( item => {
+  //   return (
+  //     <div>
+  //       { item.title }
+  //     </div>
+  //   )
+  // })
+
   return (
     <> 
       <div className="box-2">             
-       box 2     
+      box 2
       </div>
     </>
   )

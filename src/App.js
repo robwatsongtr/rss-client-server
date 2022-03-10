@@ -9,7 +9,7 @@ import './App.css';
 function App() {
 
   const [feed, setFeed] = useState({
-    feedItems: []
+    feedData: []
   })
 
   useEffect( () => {  
@@ -18,7 +18,7 @@ function App() {
       try {
         let response = await axios.get('http://localhost:5000/rssTest' );
         setFeed({
-          feedItems: response.data
+          feedData: response.data
         })
       } catch (error) {
         console.error(error)
@@ -37,12 +37,12 @@ function App() {
 
             <FeedsBoxA
               label="FeedsBoxA"
-              items={ feed.feedItems }
+              feedInfo={ feed.feedData }
             />
 
             <TitlesBoxB 
               label="TitlesBoxB"
-              items={ feed.feedItems }
+              feedInfo={ feed.feedData }
             /> 
          
         </div>
