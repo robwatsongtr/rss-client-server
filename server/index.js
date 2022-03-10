@@ -12,7 +12,6 @@ app.use(router);
 const Parser = require('rss-parser');
 const parser = new Parser();
 
-
 const apiRunning = (req, res) => {
   res.send("Api running! Better catch it");
 }
@@ -20,15 +19,19 @@ const apiRunning = (req, res) => {
 // home endpoint 
 router.get('/', apiRunning);
 
-// get a feed 
-router.get('/rss', (req, res) => {
+// get a feed for testing and development purposes 
+router.get('/rssTest', (req, res) => {
 
   (async () => {
     let feed = await parser.parseURL('https://fair.org/feed/' );
-    res.json(feed.title);  
+    res.json(feed);  
   }) ();
    
 })
+
+
+
+
 
 
 app.listen( port, () => {

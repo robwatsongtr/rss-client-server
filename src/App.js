@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FeedsBoxA from './components/FeedsBoxA';
 import TitlesBoxB from './components/TitlesBoxB';
-import ContentBoxC from './components/ContentBoxC';
 import Navbar from './components/Navbar';
 import axios from 'axios';
 import './App.css';
@@ -10,18 +9,22 @@ import './App.css';
 function App() {
 
   const [feed, setFeed] = useState({
-    feedTitle: ''
+    feedItems: []
   })
 
   useEffect( () => {  
 
-    axios.get('http://localhost:5000/')
-      .then( response => {
+    (async () => {
+      try {
+        let response = await axios.get('http://localhost:5000/rssTest' );
         setFeed({
-          feedTitle: response
+          feedItems: response.data
         })
-      }) 
-    
+      } catch (error) {
+        console.error(error)
+      }
+    })();
+  
   },[])
 
   console.log(feed);
@@ -33,16 +36,14 @@ function App() {
         <div className="appLayout">
 
             <FeedsBoxA
-
+              label="FeedsBoxA"
+              items={ feed.feedItems }
             />
 
             <TitlesBoxB 
-              
-            />
-
-            <ContentBoxC 
-              
-            />
+              label="TitlesBoxB"
+              items={ feed.feedItems }
+            /> 
          
         </div>
 
@@ -51,3 +52,6 @@ function App() {
 }
 
 export default App;
+
+
+ 

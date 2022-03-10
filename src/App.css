@@ -187,11 +187,9 @@ img {
   margin: 20px auto; 
 
   display: grid; 
-  grid-template-rows: 250px 250px 500px;
-  gap: 10px; 
+  grid-template-rows: .3fr auto;
+  gap: 20px; 
 }
-
-
 
 
 /********* other grid helpers ********************/
