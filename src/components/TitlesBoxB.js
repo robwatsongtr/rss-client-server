@@ -6,9 +6,8 @@ const TitlesBoxB = props => {
     props.clicked(e.target.id);
   }
 
-  // let parsed = JSON.parse(props.feedInfo)
 
-  // const titles = parsed.map( (item, idx) => {
+  // const titles = props.feedInfo.items.map( (item, idx) => {
   //   return(
   //     <span 
   //       key={idx}
@@ -18,7 +17,7 @@ const TitlesBoxB = props => {
   //   )
   // })
 
-  // const items = props.feedInfo.forEach( item => {
+  // const titles = props.feedInfo.items.forEach( item => {
   //   return (
   //     <div>
   //       { item.title }
@@ -26,18 +25,30 @@ const TitlesBoxB = props => {
   //   )
   // })
 
-  return (
-    <> 
-      <div className="box-2">     
+  let title = props.feedInfo.items[2].title
+  let url =  props.feedInfo.items[2].link 
 
-        { props.feedInfo.items[1].title }
-       <br></br>
-       { props.feedInfo.items[1].link }
-       
+
+  return (
+
+    <> 
+      <div className="box-2"> 
+        <a href={ url }
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          { title }
+        </a>
       </div>
     </>
+
   )
 
 }
 
 export default TitlesBoxB;
+
+
+// { props.feedInfo.items[1].title }
+
+// { props.feedInfo.items[1].link }

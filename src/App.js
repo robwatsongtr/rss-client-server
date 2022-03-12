@@ -43,7 +43,7 @@ function App() {
             <TitlesBoxB 
               label="TitlesBoxB"
               feedInfo={ feed.feedData }
-            /> 
+            />    
          
         </div>
 
@@ -52,6 +52,3 @@ function App() {
 }
 
 export default App;
-
-
- 
