@@ -6,14 +6,12 @@ const FeedsBoxA = props => {
   }
 
   const title = props.feedInfo.title
-  const feedDescription = props.feedInfo.description;
+  
 
   return (
     <> 
       <div className="box-1">    
         { title }  
-        <br></br>       
-        { feedDescription }
       </div>
     </>
   )

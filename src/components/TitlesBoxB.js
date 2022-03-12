@@ -6,12 +6,14 @@ const TitlesBoxB = props => {
     props.clicked(e.target.id);
   }
 
-  // const titles = props.items.map( (title, idx) => {
+  // let parsed = JSON.parse(props.feedInfo)
+
+  // const titles = parsed.map( (item, idx) => {
   //   return(
   //     <span 
   //       key={idx}
   //     >
-  //       {title.title}
+  //      {item.title}
   //     </span>
   //   )
   // })
@@ -26,8 +28,12 @@ const TitlesBoxB = props => {
 
   return (
     <> 
-      <div className="box-2">             
-      box 2
+      <div className="box-2">     
+
+        { props.feedInfo.items[1].title }
+       <br></br>
+       { props.feedInfo.items[1].link }
+       
       </div>
     </>
   )

@@ -23,14 +23,11 @@ router.get('/', apiRunning);
 router.get('/rssTest', (req, res) => {
 
   (async () => {
-    let feed = await parser.parseURL('https://www.reddit.com/.rss' );
-    res.send(feed);  
+    let feed = await parser.parseURL('https://inthesetimes.com/partner.xml');
+    res.json(feed);  
   }) ();
    
 })
-
-
-
 
 
 
