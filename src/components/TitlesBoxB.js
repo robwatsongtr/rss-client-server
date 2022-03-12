@@ -25,22 +25,24 @@ const TitlesBoxB = props => {
   //   )
   // })
 
-  let title = props.feedInfo.items[2].title
-  let url =  props.feedInfo.items[2].link 
+  const titleList = props.feedInfo.map(feedItem => {
+    return (
+      
+      <a href={ feedItem.url }
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        { feedItem.title }
+      </a>
+    )
+  })
 
 
   return (
 
-    <> 
-      <div className="box-2"> 
-        <a href={ url }
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          { title }
-        </a>
-      </div>
-    </>
+    <div className="box-2">  
+     {titleList}
+     </div>
 
   )
 

@@ -1,23 +1,21 @@
 const FeedsBoxA = props => {
 
-  const clicked = e => {
-    e.preventDefault();
-    props.clicked(e.target.id);
+  const clicked = title => {
+    props.clicked(title);
   }
 
-  const title = props.feedInfo.title;
-  const link = props.feedInfo.link;
+  const feedList = props.feedInfo.sort().map(feedTitle => {
+    return (
+      <div key={feedTitle} className="box-1" onClick={clicked.bind(this, feedTitle)}>
+          { feedTitle }
+      </div>
+    )
+  })
+
 
   return (
-    <> 
-      <div className="box-1">    
-        <a href={ link }
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          { title }
-        </a>
-      </div>
+    <>
+      {feedList}
     </>
   )
 
