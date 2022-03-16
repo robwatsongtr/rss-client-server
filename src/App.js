@@ -14,16 +14,21 @@ function App() {
 
   // Utility routine to turn an array of feed data into a map indexed by title.
   const setFeedMap = (feedArray) => {
+
     console.log(feedArray)
     let feedMap = {}
+
     feedArray.forEach(feed => {
       feedMap[feed.title] = feed
     })
+
     console.log(feedMap)
     setFeed(feedMap)
+
   }
 
   const clicked = (feedId) => {
+
     // Is the feed there (it really should be)
     const selectedFeed = feed[feedId];
     if (!selectedFeed) {
@@ -35,6 +40,7 @@ function App() {
       return
     }
     setFeedItems(selectedFeed.items)
+    
   }
 
   useEffect( () => {  
