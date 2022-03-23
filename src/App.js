@@ -17,6 +17,7 @@ function App() {
     (async () => {
       try {
         let response = await axios.get('http://localhost:5000/rssTest' );
+        console.log(response)
         setFeedMap([response.data])
       } catch (error) {
         console.error(error)
@@ -25,25 +26,31 @@ function App() {
   
   },[])
 
-  // Utility routine to turn an array of feed data into a map indexed by title.
+
+  // Utility function to turn an array of feed data into a map indexed by title.
+  // This function is called above right after the API response in the async function. 
+  // State is updated here for the list of feeds to be displayed.  
   const setFeedMap = (feedArray) => {
 
-    console.log(feedArray)
+    console.log('feed array:', feedArray)
     let feedMap = {}
 
     feedArray.forEach(feed => {
       feedMap[feed.title] = feed
     })
 
-    console.log(feedMap)
+    console.log('feed map:', feedMap)
     setFeed(feedMap)
 
   }
 
+  // this function is called when the feed name is clicked in FeedsBoxA
+  // the feed id is the name of the feed itself 
+  // State is updated here for the list of articles as links to be displayed.  
   const clicked = (feedId) => {
 
-    // Is the feed there (it really should be)
     const selectedFeed = feed[feedId];
+
     if (!selectedFeed) {
       setFeedItems([`Error: feed ${feedId} not found?!?!`])
       return
@@ -52,11 +59,14 @@ function App() {
       setFeedItems([`Error: feed ${feedId} has no items?!?!`])
       return
     }
+
+    // console.log(feedId)
+
     setFeedItems(selectedFeed.items)
     
   }
 
-  console.log(feed);
+  
 
   return (
     <>
