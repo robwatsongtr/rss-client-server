@@ -12,6 +12,19 @@ function App() {
 
   const [feedItems, setFeedItems] = useState([])
 
+  useEffect( () => {  
+
+    (async () => {
+      try {
+        let response = await axios.get('http://localhost:5000/rssTest' );
+        setFeedMap([response.data])
+      } catch (error) {
+        console.error(error)
+      }
+    })();
+  
+  },[])
+
   // Utility routine to turn an array of feed data into a map indexed by title.
   const setFeedMap = (feedArray) => {
 
@@ -42,19 +55,6 @@ function App() {
     setFeedItems(selectedFeed.items)
     
   }
-
-  useEffect( () => {  
-
-    (async () => {
-      try {
-        let response = await axios.get('http://localhost:5000/rssTest' );
-        setFeedMap([response.data])
-      } catch (error) {
-        console.error(error)
-      }
-    })();
-  
-  },[])
 
   console.log(feed);
 
