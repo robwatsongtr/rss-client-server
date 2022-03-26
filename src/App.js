@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
 
-  const [feed, setFeed] = useState({})
+  const [feed, setFeed] = useState([])
 
   const [feedItems, setFeedItems] = useState([])
 
@@ -17,12 +17,13 @@ function App() {
     (async () => {
       try {
         let response = await axios.get('http://localhost:5000/rssTest' );
-        console.log(response)
+        console.log('raw api response', response)
         setFeedMap([response.data])
       } catch (error) {
         console.error(error)
       }
     })();
+    
   
   },[])
 
