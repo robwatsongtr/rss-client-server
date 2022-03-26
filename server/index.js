@@ -33,30 +33,19 @@ const apiRunning = (req, res) => {
 router.get('/', apiRunning);
 
 // get a feed for testing and development purposes 
-router.get('/rssTest', (req, res) => {
+router.get('/rssTest', async (req, res) => {
 
-  const feedsLoop = async () => {
+  const feedPromises = feedURls.map( fds => parser.parseURL(fds));
 
-    // create array of promises.
-    // I want to put into a try catch block but not sure how.
-    const feedPromises = feedURls.map( async (fds) => {
-      const returnedFeeds = await parser.parseURL(fds);
-      return returnedFeeds;
-    })
+  Promise.all(feedPromises).then( feedsToFrontEnd => {
+    res.json(feedsToFrontEnd);
+  }).catch( err => {
+    res.status(500)
+    res.json(err)
+  })
   
-    // now we wait for the array of promises to get resolved
-    const allFeeds = await Promise.all(feedPromises);
-   
-    return allFeeds
-  }
   
-  let feedsToFrontEnd = feedsLoop()
-  
-  res.json(feedsToFrontEnd)
-   
 })
-
-// make an endpoint that serves multiple feeds to front end 
 
 
 app.listen( port, () => {

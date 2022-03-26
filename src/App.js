@@ -18,12 +18,12 @@ function App() {
       try {
         let response = await axios.get('http://localhost:5000/rssTest' );
         console.log('raw api response', response)
-        setFeedMap([response.data])
+        setFeedMap(response.data)
       } catch (error) {
         console.error(error)
       }
     })();
-    
+
   
   },[])
 

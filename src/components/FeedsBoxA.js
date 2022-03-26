@@ -6,16 +6,16 @@ const FeedsBoxA = props => {
 
   const feedList = props.feedInfo.map(feedTitle => {
     return (
-      <div key={feedTitle} className="box-1" onClick={clicked.bind(this, feedTitle)}>
+      <span key={feedTitle} onClick={ clicked.bind(this, feedTitle) }>
           { feedTitle }
-      </div>
+      </span>
     )
   })
 
   return (
-    <>
+    <div className="box-1">
       {feedList}
-    </>
+    </div>
   )
 
 }
