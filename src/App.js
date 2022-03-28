@@ -5,11 +5,9 @@ import Navbar from './components/Navbar';
 import axios from 'axios';
 import './App.css';
 
-
 function App() {
 
   const [feed, setFeed] = useState([])
-
   const [feedItems, setFeedItems] = useState([])
 
   useEffect( () => {  
@@ -24,9 +22,7 @@ function App() {
       }
     })();
 
-  
   },[])
-
 
   // Utility function to turn an array of feed data into a map indexed by title.
   // This function is called above right after the API response in the async function. 
@@ -61,34 +57,24 @@ function App() {
       return
     }
 
-    // console.log(feedId)
-
     setFeedItems(selectedFeed.items)
-    
+   
   }
-
-  
 
   return (
     <>
        <Navbar />
-
         <div className="appLayout">
-
             <FeedsBoxA
               label="FeedsBoxA"
               clicked = { clicked }
               feedInfo = {Object.keys(feed)}
             />
-
             <TitlesBoxB 
               label="TitlesBoxB"
               feedInfo={ feedItems }
             />    
-            
-         
         </div>
-
     </>
   );
 }

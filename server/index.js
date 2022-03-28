@@ -25,35 +25,27 @@ const feedURls = ['https://jewishcurrents.org/partner.xml',
   'https://thelaborreport.substack.com/feed'
   ]
 
+// home endpoint 
 const apiRunning = (req, res) => {
   res.send("Api running! Better catch it");
 }
-
-// home endpoint 
 router.get('/', apiRunning);
 
-// get a feed for testing and development purposes 
-router.get('/rssTest', async (req, res) => {
-
-  const feedPromises = feedURls.map( fds => parser.parseURL(fds));
-
-  Promise.all(feedPromises).then( feedsToFrontEnd => {
-    res.json(feedsToFrontEnd);
-  }).catch( err => {
-    res.status(500)
-    res.json(err)
-  })
+// get feeds to the front end from the test array.
+router.get('/rssTest',  (req, res) => {
   
-  
+  const feedPromises = feedURls.map( fds => parser.parseURL(fds) );
+
+  Promise.all(feedPromises)
+    .then( feedsToFrontEnd => { 
+      res.json(feedsToFrontEnd);
+    })
+    .catch( err => {
+      res.status(500)
+      res.json(err)
+    })
 })
-
 
 app.listen( port, () => {
   console.log(`Server running on port ${port}`);
 })
-
-
-// (async () => {
-//   let feed = await parser.parseURL('https://inthesetimes.com/partner.xml');
-//   res.json(feed);  
-// }) ();
