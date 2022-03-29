@@ -22,8 +22,9 @@ const feedURls = ['https://jewishcurrents.org/partner.xml',
   'https://therednation.org/feed/', 
   'https://themarkup.org/feeds/rss.xml', 
   'https://www.canopycanopycanopy.com/feed',
-  'https://thelaborreport.substack.com/feed'
-  ]
+  'https://thelaborreport.substack.com/feed',
+  'https://www.reddit.com/.rss'
+]
 
 // home endpoint 
 const apiRunning = (req, res) => {
@@ -33,7 +34,7 @@ router.get('/', apiRunning);
 
 // get feeds to the front end from the test array.
 router.get('/rssTest',  (req, res) => {
-  
+
   const feedPromises = feedURls.map( fds => parser.parseURL(fds) );
 
   Promise.all(feedPromises)
