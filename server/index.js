@@ -5,12 +5,22 @@ const app = express()
 const router = express.Router();
 const port = 5000;
 const cors = require("cors")
+const mongoose = require('mongoose')
 
 app.use(cors())
 app.use(router); 
 
 const Parser = require('rss-parser');
 const parser = new Parser();
+
+// mongoDB / mongoose initializaton 
+mongoose.connect('mongodb://127.0.0.1:27017/rss_feeds_db', { useNewUrlParser: true })
+const connection = mongoose.connection
+
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
+})
+
 
 const feedURls = ['https://jewishcurrents.org/partner.xml', 
   'https://readpassage.com/feed/', 
