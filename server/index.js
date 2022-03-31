@@ -21,7 +21,7 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
-
+// test array of feed urls 
 const feedURls = ['https://jewishcurrents.org/partner.xml', 
   'https://readpassage.com/feed/', 
   'http://popula.com/feed/', 
