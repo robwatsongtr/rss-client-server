@@ -2,16 +2,23 @@
 
 const express = require('express');
 const app = express()
+const bodyParser = require('body-parser')
 const router = express.Router();
 const port = 5000;
 const cors = require("cors")
 const mongoose = require('mongoose')
-
-app.use(cors())
-app.use(router); 
-
 const Parser = require('rss-parser');
 const parser = new Parser();
+
+// middleware 
+const feedTestRoutes = express.Router();
+app.use(cors())
+app.use(bodyParser.json());
+app.use(router); 
+app.use('/feedTest', feedTestRoutes)
+
+// the test db model 
+let feedTest = require('./feed_test_model')
 
 // mongoDB / mongoose initializaton 
 mongoose.connect('mongodb://127.0.0.1:27017/rss_feeds_db', { useNewUrlParser: true })
@@ -21,7 +28,14 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
-// test array of feed urls 
+// home (test) endpoint 
+const apiRunning = (req, res) => {
+  res.send("Api running! Better catch it");
+}
+router.get('/', apiRunning);
+
+
+// test array of feed urls -------------------------------------
 const feedURls = ['https://jewishcurrents.org/partner.xml', 
   'https://readpassage.com/feed/', 
   'http://popula.com/feed/', 
@@ -36,13 +50,7 @@ const feedURls = ['https://jewishcurrents.org/partner.xml',
   'https://www.reddit.com/.rss'
 ]
 
-// home endpoint 
-const apiRunning = (req, res) => {
-  res.send("Api running! Better catch it");
-}
-router.get('/', apiRunning);
-
-// get feeds to the front end from the test array.
+// get feeds to the front end from the test array NO DB
 router.get('/rssTest',  (req, res) => {
 
   const feedPromises = feedURls.map( fds => parser.parseURL(fds) );
@@ -56,6 +64,13 @@ router.get('/rssTest',  (req, res) => {
       res.json(err)
     })
 })
+
+// MongoDB Routes-------------------------------------------
+
+
+
+
+
 
 app.listen( port, () => {
   console.log(`Server running on port ${port}`);

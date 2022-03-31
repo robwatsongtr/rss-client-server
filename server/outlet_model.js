@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-let Outlet = new Schema({
+const Outlet = new Schema({
   outlet_name: String,
   outlet_URL: String,
   outlet_links: {
