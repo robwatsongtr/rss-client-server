@@ -67,8 +67,36 @@ router.get('/rssTest',  (req, res) => {
 
 // MongoDB Routes-------------------------------------------
 
+// get all feeds
+feedTestRoutes.route('/').get( (req, res) => {
+  feedTest.find( (err, feeds) => {
+    if( err ) {
+      console.log( err) 
+    } else {
+      res.json(feeds)
+    }
+  })
+}) 
 
+// get feed by id
+feedTestRoutes.route('/:id').get( (req, res) => {
+  let id = req.params.id
+  feedTest.findById( id, (err, feed) =>{
+    res.json(feed)
+  })
+})
 
+// add a feed 
+feedTestRoutes.route('/add').post( (req, res) => {
+  let feed = new feedTest(req.body)
+  feed.save()
+    .then( feed => {
+      res.status(200).json({'feed': 'feed added successfully'});
+    })
+    .catch( err => {
+      res.status(400).send('adding new feed failed');
+    })
+})
 
 
 
