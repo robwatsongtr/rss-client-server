@@ -15,7 +15,7 @@ const feedTestRoutes = express.Router();
 app.use(cors())
 app.use(bodyParser.json());
 app.use(router); 
-app.use('/feedTest', feedTestRoutes)
+app.use('/feedTest', feedTestRoutes) // THE HTTP PATH
 
 // the test db model 
 let feedTest = require('./feed_test_model')
@@ -65,7 +65,7 @@ router.get('/rssTest',  (req, res) => {
     })
 })
 
-// MongoDB Routes-------------------------------------------
+// MongoDB Routes--------------------------------------------------
 
 // get all feeds
 feedTestRoutes.route('/').get( (req, res) => {
@@ -90,10 +90,10 @@ feedTestRoutes.route('/:id').get( (req, res) => {
 feedTestRoutes.route('/add').post( (req, res) => {
   let feed = new feedTest(req.body)
   feed.save()
-    .then( feed => {
+    .then( () => {
       res.status(200).json({'feed': 'feed added successfully'});
     })
-    .catch( err => {
+    .catch( () => {
       res.status(400).send('adding new feed failed');
     })
 })
