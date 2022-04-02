@@ -9,11 +9,14 @@ Install mongoose, mongodb locally
 Create a new MongoDB database named rss_feeds_db:
 
 $ mongo
-> use rss_feeds_db
+
+use rss_feeds_db
 
 Run the database with 
 
 $ mongod
+
+nodemon or node index.js from server folder to test / run server. 
 
 npm run dev / to start client and server if you so wish to run both from one command
 
