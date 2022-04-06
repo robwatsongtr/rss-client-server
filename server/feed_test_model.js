@@ -7,6 +7,10 @@ const rss_feeds_db = new Schema({
   },
   feedURL: { 
     type: String 
+  },
+  mediaType: {
+    type: String,
+    default: "article"
   }
 })
 
