@@ -89,6 +89,8 @@ feedTestRoutes.route('/:id').get( (req, res) => {
 // add a feed 
 feedTestRoutes.route('/add').post( (req, res) => {
   let feed = new feedTest(req.body)
+  console.log(req)
+  console.log(feed)
   feed.save()
     .then( () => {
       res.status(200).json({'feed': 'feed added successfully'});
@@ -101,5 +103,5 @@ feedTestRoutes.route('/add').post( (req, res) => {
 
 
 app.listen( port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port ${port}. This is robd fucking up your branch`);
 })
