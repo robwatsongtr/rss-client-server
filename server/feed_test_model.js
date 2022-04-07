@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+// this is my test schema
 const rss_feeds_db = new Schema({
   feedName: { 
     type: String 
