@@ -15,7 +15,9 @@ const feedTestRoutes = express.Router();
 app.use(cors())
 app.use(bodyParser.json());
 app.use(router); 
-app.use('/feedTest', feedTestRoutes) // THE HTTP PATH
+
+// THE HTTP PATH
+app.use('/mongoTest', feedTestRoutes) 
 
 // the test db model 
 let feedTest = require('./feed_test_model')
