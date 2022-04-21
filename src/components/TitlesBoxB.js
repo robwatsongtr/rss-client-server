@@ -14,11 +14,9 @@ const TitlesBoxB = props => {
   })
 
   return (
-
     <div className="box-2">  
      {titleList}
      </div>
-
   )
 
 }
