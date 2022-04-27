@@ -9,10 +9,11 @@ const port = 5000;
 const cors = require("cors")
 const Parser = require('rss-parser');
 const parser = new Parser();
+const logger = require("express-chrome-logger")
 
-app.use(cors())
-app.use(bodyParser.json())
-app.use(require("express-chrome-logger"));
+app.use(cors)
+app.use(bodyParser)
+app.use(logger);
 
 const feedURls = ['https://jewishcurrents.org/partner.xml', 
   'https://readpassage.com/feed/', 
