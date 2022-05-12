@@ -27,9 +27,9 @@ const Story = mongoose.model('Story', storySchema)
 const Person = mongoose.model('Person', personSchema)
 
 Story.find().populate('author')
-    .exec(function (err, story) {
-      if (err) return console.log(err);
-      console.log(story);
-      // prints "The author is Ian Fleming"
-    }
-  );
+  .exec(function (err, story) {
+    if (err) return console.log(err);
+    console.log(story);
+    
+  }
+);
