@@ -27,7 +27,7 @@ const Story = mongoose.model('Story', storySchema)
 const Person = mongoose.model('Person', personSchema)
 
 Story.find().populate('author')
-  .exec(function (err, story) {
+  .exec( (err, story) => {
     if (err) return console.log(err);
     console.log(story);
     
