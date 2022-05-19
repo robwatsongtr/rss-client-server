@@ -1,21 +1,29 @@
 // Program to parse a string into names
 
 /*
-The approach, scan the string for a comma then space, or a comma, space, 
-and and and split there
 
 
+split on:
+
+space
+comma space
+comma space and space 
 
 */
 
 
-const splitStringNames = (str) => {
-
-
-
+// returns an array of names 
+const splitStringNames = (names) => {
+  const regEx = /\s*(?:,|$)\s*/
+  const nameList = names.split(regEx)
+  return nameList
 }
 
 
 console.log( 
   splitStringNames('Surya Mattu, Angie Waller, Simon Fondrie-Teitler, and Micha Gorelick ')
+)
+
+console.log( 
+  splitStringNames('Colin Lecher and Surya Mattu ')
 )

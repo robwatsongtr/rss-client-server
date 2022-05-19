@@ -12,7 +12,7 @@ let parser = new Parser({
 
 (async () => {
 
-  let feed = await parser.parseURL('https://prospect.org/api/rss/all.rss')
+  let feed = await parser.parseURL('https://theappeal.org/feed/theappeal/')
   console.log( util.inspect( feed,{showHidden: false, depth: null, colors: true} ) );
 
 })();
