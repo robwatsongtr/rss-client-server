@@ -9,3 +9,31 @@ const connection = mongoose.connection
 connection.once('open', () => {
 console.log("MongoDB database connection established successfully");
 })
+
+
+// define data models:
+const TagSchema = new Schema({
+  name: String,
+  slug: String,
+  tutorials: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Tutorial"
+    }
+  ]
+})
+
+const TutorialSchema = new Schema({
+  title: String,
+  author: String,
+  tags: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Tag"
+    }
+  ]
+})
+
+const Tag = mongoose.model('Tag', TagSchema)
+const Tutorial = mongoose.model('Tutorial', TutorialSchema)
+
