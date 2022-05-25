@@ -1,3 +1,5 @@
+// MongoDB / Mongoose Many-to-Many example 
+
 
 const mongoose = require('mongoose')
 const { Schema } = mongoose
@@ -17,7 +19,7 @@ const TagSchema = new Schema({
   slug: String,
   tutorials: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Tutorial"
     }
   ]
@@ -28,7 +30,7 @@ const TutorialSchema = new Schema({
   author: String,
   tags: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Tag"
     }
   ]
