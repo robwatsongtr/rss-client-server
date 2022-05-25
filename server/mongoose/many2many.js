@@ -1,6 +1,5 @@
 // MongoDB / Mongoose Many-to-Many example 
 
-
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
@@ -39,3 +38,42 @@ const TutorialSchema = new Schema({
 const Tag = mongoose.model('Tag', TagSchema)
 const Tutorial = mongoose.model('Tutorial', TutorialSchema)
 
+
+// make the docs 
+const createTutorial = (tutorial) => {
+  return Tutorial.save(tutorial)
+    .then( docTutorial => {
+      console.log(`\n>> Created Tutorial:\n ${tutorial}` )
+      return docTutorial
+  })
+}
+
+const createTag = (tag) => {
+  return Tag.save(tag)
+    .then( docTag => {
+      console.log(`\n>> Created Tutorial:\n ${docTag}` )
+      return docTag
+  })
+}
+
+// Tag to Tutorial
+const addTagToTutorial = (tutorialId, tag) => {
+  return Tutorial.findByIdAndUpdate( 
+    tutorialId,
+    { $push: { tags: tag._id} },
+    { new: true, useFindAndModify: false }
+  )
+}
+
+// Tutorial to Tag 
+const addTutorialToTag = (tagId, tutorial) => {
+  return Tag.findByIdAndUpdate (
+    tagId,
+    { $push: { tutorials: tutorial._id } },
+    { new: true, useFindAndModify: false }
+  )
+}
+
+const run = async () => {
+  
+}
