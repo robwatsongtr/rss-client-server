@@ -107,15 +107,11 @@ const run = async () => {
   console.log(`\n>> programming tips: ${anotherTutorial2Tag}\n`); 
 
 
-
-
   // make a second tutorial
   const tut2 = await createTutorial({
     title: "Programming Tips 2022!!!!",
     author: "nostaw bor"
   });
-
-
 
   // add the progTipsTag to the second tutorial
   const tag2tutorial2 = await addTagToTutorial(tut2._id, progTipsTag)
@@ -124,7 +120,6 @@ const run = async () => {
   // add the second tutorial to the progTipsTag
   const tutorial2tag2 = await addTutorialToTag(progTipsTag._id, tut2) 
   console.log(`\n>> programming tips: ${tutorial2tag2}\n `)
-
 
 
   // populate:
